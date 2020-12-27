@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        dotnetsdk '.NET Core 3.1' 
+    }
     stages {
         stage('Restore packages') {
             steps {
