@@ -2,20 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Restore packages') {
             steps {
-                echo "hello world Build"
+                bat "dotnet restore WebApplication\\WebApplication.csproj"
             }
         }
-        stage('Test') {
-            steps {
-                echo "hello world Test"
+        stage('Clean'){
+            steps{
+                bat "dotnet clean WebApplication\\WebApplication.csproj"
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo "hello world Deploy"
+        }        
+        stage('Build'){
+           steps{
+              bat "dotnet build WebApplication\\WebApplication.csproj --configuration Release"
             }
+         }
+        stage('Test: Unit Test'){
+           steps {
+             bat "dotnet test XUnitTestProject\\XUnitTestProject.csproj"
+             }
+          }
+        stage('Publish'){
+             steps{
+               bat "dotnet publish WebApplication\\WebApplication.csproj "
+             }
         }
     }
 }
