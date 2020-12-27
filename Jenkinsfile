@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        dotnetsdk 'dotnetsdk:1.0.0'
+        dotnetsdk 'null'
     }
     stages {
         stage('Restore packages') {
