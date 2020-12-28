@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clean'){
            steps{
-               dotnetClean project: 'WebApplication\\WebApplication.csproj', sdk: 'dotnetsdk3.1'
+               dotnetClean project: 'WebApplication.sln', sdk: 'dotnetsdk3.1'
             }
          }
     }
