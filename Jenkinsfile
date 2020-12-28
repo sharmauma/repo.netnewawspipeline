@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clean'){
            steps{
-               dotnetClean configuration: 'Release', project: 'WebApplication.sln'
+               dotnetClean project: 'WebApplication.sln', sdk: 'dotnetsdk3.1'
             }
          }
         stage('Restore packages'){
@@ -16,17 +16,17 @@ pipeline {
          }
         stage('Build'){
            steps{
-               dotnetBuild project: 'WebApplication.sln'
+               dotnetBuild project: 'WebApplication.sln', sdk: 'dotnetsdk3.1'
             }
          }
         stage('Test: Unit Test'){
            steps {
-                dotnetTest project: 'XUnitTestProject\\XUnitTestProject.csproj'
+                dotnetTest project: 'XUnitTestProject\\XUnitTestProject.csproj', sdk: 'dotnetsdk3.1'
              }
           }
         stage('Publish'){
              steps{
-               dotnetPublish project: 'WebApplication\\WebApplication.csproj'
+               dotnetPublish project: 'WebApplication\\WebApplication.csproj', sdk: 'dotnetsdk3.1'
              }
         }
     }
