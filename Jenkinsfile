@@ -1,32 +1,30 @@
 pipeline {
     agent any
-    tools {
-      dotnetsdk 'dotnetsdk3.1'
-    }
+    
     stages {
         stage('Restore packages'){
            steps{
-               dotnetRestore project: 'WebApplication.sln', sdk: 'dotnetsdk3.1'
+               sh 'dotnet restore WebApplication.sln'
             }
          }        
         stage('Clean'){
            steps{
-               dotnetClean project: 'WebApplication.sln', sdk: 'dotnetsdk3.1', configuration: 'Release'
+               sh 'dotnet clean WebApplication.sln --configuration Release'
             }
          }
         stage('Build'){
            steps{
-               dotnetBuild project: 'WebApplication.sln', sdk: 'dotnetsdk3.1', configuration: 'Release'
+               sh 'dotnet build WebApplication.sln --configuration Release'
             }
          }
         stage('Test: Unit Test'){
            steps {
-                dotnetTest project: 'XUnitTestProject\\XUnitTestProject.csproj', sdk: 'dotnetsdk3.1', configuration: 'Release'
+                sh 'dotnet test XUnitTestProject\\XUnitTestProject.csproj --configuration Release'
              }
           }
         stage('Publish'){
              steps{
-               dotnetPublish project: 'WebApplication\\WebApplication.csproj', sdk: 'dotnetsdk3.1', configuration: 'Release'
+               sh 'dotnet publish WebApplication\\WebApplication.csproj --configuration Release'
              }
         }
         stage('Deploy'){
