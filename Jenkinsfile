@@ -19,17 +19,17 @@ pipeline {
          }
         stage('Test: Unit Test'){
            steps {
-                sh 'dotnet test XUnitTestProject\XUnitTestProject.csproj --configuration Release'
+                sh 'dotnet test XUnitTestProject\\XUnitTestProject.csproj --configuration Release'
              }
           }
         stage('Publish'){
              steps{
-               sh 'dotnet publish WebApplication\WebApplication.csproj --configuration Release'
+               sh 'dotnet publish WebApplication\\WebApplication.csproj --configuration Release'
              }
         }
         stage('Deploy'){
              steps{
-               sh 'dotnet WebApplication\bin\Release\netcoreapp3.1\publish\WebApplication.dll --urls="http://104.128.91.189:9090" --ip="104.128.91.189" --port=9090'
+               sh 'dotnet WebApplication\\bin\\Release\\netcoreapp3.1\\publish\\WebApplication.dll --urls="http://104.128.91.189:9090" --ip="104.128.91.189" --port=9090'
              }
         }        
     }
