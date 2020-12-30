@@ -1,8 +1,8 @@
 pipeline {
     agent any
     triggers {
-        githubPush()
-      }
+        pollSCM('') // Enabling being build on Push
+    }
     stages {
         stage('Restore packages'){
            steps{
