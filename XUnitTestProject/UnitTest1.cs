@@ -8,8 +8,8 @@ namespace XUnitTestProject
         [Fact]
         public void Test1()
         {
-            System.Console.WriteLine("abc");
-            Assert.Equal(1,1);
+            System.Console.WriteLine("xunit test");
+            Assert.Equal(1,2);
         }
     }
 }
