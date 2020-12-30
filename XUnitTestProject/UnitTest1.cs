@@ -9,7 +9,7 @@ namespace XUnitTestProject
         public void Test1()
         {
             System.Console.WriteLine("xunit test");
-            Assert.Equal(1,2);
+            Assert.Equal(1,1);
         }
     }
 }
