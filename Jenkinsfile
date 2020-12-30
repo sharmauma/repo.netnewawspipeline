@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy'){
              steps{
-               sh 'kill -9 $(lsof -t -i:9090)'
+               sh 'kill $(lsof -t -i:9090)'
                sh 'cd WebApplication/bin/Release/netcoreapp3.1/publish/'
                sh 'nohup dotnet WebApplication.dll --urls="http://104.128.91.189:9090" --ip="104.128.91.189" --port=9090 --no-restore > /dev/null 2>&1 &'
              }
