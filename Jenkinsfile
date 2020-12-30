@@ -9,7 +9,7 @@ pipeline {
          }        
         stage('Clean'){
            steps{
-               sh 'dotnet clean WebApplication.sln --configuration Release  --no-restore'
+               sh 'dotnet clean WebApplication.sln --configuration Release'
             }
          }
         stage('Build'){
