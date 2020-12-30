@@ -29,6 +29,7 @@ pipeline {
         }
         stage('Deploy'){
              steps{
+                /usr/bin/nohup    dotnet WebApplication.dll --urls="http://104.128.91.189:9090" --ip="104.128.91.189" --port=9090  > /dev/null 2>&1 &
                sh 'dotnet WebApplication/bin/Release/netcoreapp3.1/publish/WebApplication.dll --urls="http://104.128.91.189:9090" --ip="104.128.91.189" --port=9090'
              }
         }        
