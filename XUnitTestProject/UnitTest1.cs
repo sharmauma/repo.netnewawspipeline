@@ -8,6 +8,7 @@ namespace XUnitTestProject
         [Fact]
         public void Test1()
         {
+            //run unit test code
             Assert.Equal(1,1);
         }
     }
