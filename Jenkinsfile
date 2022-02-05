@@ -39,7 +39,7 @@ pipeline {
             }
         }
         
-        stage('Docker Deploy'{
+        stage('Docker Deploy'){
             steps{
                 sh "docker run -d -p 9000:80 krish2356/aspnet:${DOCKER_TAG}"
             }
