@@ -36,7 +36,7 @@ pipeline {
             steps{
                 sh 'cd  /var/lib/jenkins/workspace/dotnet-pipe/WebApplication/ '
                // sh "chmod 777 /var/run/docker.sock"
-                sh "docker build -t krish2356/aspnet:${DOCKER_TAG} ."
+                sh "docker build . -t krish2356/aspnet:${DOCKER_TAG}"
             }
         }
         stage('Deploy'){
