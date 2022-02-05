@@ -3,6 +3,9 @@ pipeline {
      triggers {
         githubPush()
       }
+     environment {
+      DOCKER_TAG = getVersion()
+    }
     stages {
         stage('Restore packages'){
            steps{
@@ -28,6 +31,12 @@ pipeline {
              steps{
                sh 'dotnet publish WebApplication/WebApplication.csproj --configuration Release --no-restore'
              }
+        }
+        stage('Docker Build'){
+            steps{
+               // sh "chmod 777 /var/run/docker.sock"
+                sh "docker build . -t krish2356/aspnet:${DOCKER_TAG}"
+            }
         }
         stage('Deploy'){
              steps{
