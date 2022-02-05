@@ -35,7 +35,7 @@ pipeline {
                 //       kill -9 $pid
              //  done'''
                sh 'cd WebApplication/bin/Release/netcoreapp3.1/publish/'
-               sh 'cp -r /var/lib/jenkins/workspace/dotnet-pipe/WebApplication/bin/Release/netcoreapp3.1 /var/www/html/netcoreapp3.1'
+               sh 'cp -r /var/lib/jenkins/workspace/dotnet-pipe/WebApplication/bin/Release/netcoreapp3.1 /var/www/html/netcoreapp3.1/'
              }
         }        
     }
