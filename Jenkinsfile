@@ -36,7 +36,6 @@ pipeline {
             steps{
                // sh "chmod 777 /var/run/docker.sock"
                 sh "docker build . -t krish2356/aspnet:${DOCKER_TAG}"
-                sh "docker run -d -p 9000:80 krish2356/aspnet:${DOCKER_TAG}'
             }
         }
         
