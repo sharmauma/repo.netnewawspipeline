@@ -34,6 +34,7 @@ pipeline {
         }
         stage('Docker Build'){
             steps{
+                sh 'cd WebApplication'
                // sh "chmod 777 /var/run/docker.sock"
                 sh "docker build . -t krish2356/aspnet:${DOCKER_TAG}"
             }
