@@ -31,11 +31,11 @@ pipeline {
         }
         stage('Deploy'){
              steps{
-               sh '''for pid in $(lsof -t -i:9090); do
-                       kill -9 $pid
-               done'''
+              // sh '''for pid in $(lsof -t -i:9090); do
+                //       kill -9 $pid
+             //  done'''
                sh 'cd WebApplication/bin/Release/netcoreapp3.1/publish/'
-               sh 'nohup dotnet WebApplication.dll --urls="http://20.204.5.220:9000/" --ip="20.204.5.220" --port=9000 --no-restore > /dev/null 2>&1 &'
+               sh 'cp netcoreapp3.1 /var/www/html/netcoreapp3.1'
              }
         }        
     }
