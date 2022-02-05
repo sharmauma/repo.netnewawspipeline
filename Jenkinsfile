@@ -36,9 +36,17 @@ pipeline {
             steps{
                // sh "chmod 777 /var/run/docker.sock"
                 sh "docker build . -t krish2356/aspnet:${DOCKER_TAG}"
+                sh "docker run -d -p 9000:80 krish2356/aspnet:${DOCKER_TAG}'
             }
         }
-        stage('Deploy'){
+        
+        stage('Docker Deploy'{
+            steps{
+                sh "docker run -d -p 9000:80 krish2356/aspnet:${DOCKER_TAG}"
+            }
+        }
+              
+        stage('Deploy local'){
              steps{
               // sh '''for pid in $(lsof -t -i:9090); do
                 //       kill -9 $pid
